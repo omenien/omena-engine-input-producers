@@ -22,20 +22,13 @@ Current lane calibration:
   - `selector-usage`
   - current `EngineInputV2` does not preserve enough reference-level evidence to promote it beyond shadow validation
 
-Primary checks:
+Standalone checks:
 
-- `cargo test --manifest-path rust/Cargo.toml -p engine-input-producers`
-- `pnpm check:rust-source-side-lane`
-- `pnpm check:rust-semantic-lane`
-- `pnpm check:rust-producer-boundary`
+- `cargo test`
+- `cargo fmt --all --check`
+- `cargo clippy --all-targets --all-features -- -D warnings`
 
-Split-readiness notes:
+Extraction note:
 
-- preferred current extraction method: `git subtree split`
-- current split feasibility notes: [docs/engine-input-producers-split.md](../../../docs/engine-input-producers-split.md)
-
-Release-facing bundle:
-
-- `pnpm check:rust-release-bundle`
-
-This crate is intentionally internal. `publish = false` remains in effect at the workspace level.
+- this branch is a standalone scaffold prototype derived from a history-preserving subtree split
+- it keeps the existing crate name to minimize migration noise for the current internal consumer
