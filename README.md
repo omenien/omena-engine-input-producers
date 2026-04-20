@@ -32,3 +32,10 @@ Extraction note:
 
 - this branch is a standalone scaffold prototype derived from a history-preserving subtree split
 - it keeps the existing crate name to minimize migration noise for the current internal consumer
+- repository/org naming is intentionally deferred
+- set `package.repository` only after the target repo name and owner are fixed
+
+Current naming stance:
+
+- keep crate name: `engine-input-producers`
+- treat repository naming as a separate later decision

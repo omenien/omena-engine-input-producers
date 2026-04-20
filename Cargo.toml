@@ -5,7 +5,6 @@ edition = "2024"
 license = "MIT"
 publish = false
 description = "Rust input-derived producer artifacts for CSS Module Explainer EngineInputV2"
-repository = "https://github.com/yongsk0066/css-module-explainer"
 readme = "README.md"
 
 [lints.rust]
