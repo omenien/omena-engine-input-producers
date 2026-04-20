@@ -6,6 +6,7 @@ license = "MIT"
 publish = false
 description = "Rust input-derived producer artifacts for CSS Module Explainer EngineInputV2"
 readme = "README.md"
+repository = "https://github.com/omenien/omena-engine-input-producers"
 
 [lints.rust]
 unsafe_code = "deny"
