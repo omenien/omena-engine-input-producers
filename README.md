@@ -22,25 +22,15 @@ Current lane calibration:
   - `selector-usage`
   - current `EngineInputV2` does not preserve enough reference-level evidence to promote it beyond shadow validation
 
-Standalone checks:
+Primary checks:
 
-- `cargo test`
-- `cargo fmt --all --check`
-- `cargo clippy --all-targets --all-features -- -D warnings`
+- `cargo test --manifest-path rust/Cargo.toml -p engine-input-producers`
+- `pnpm check:rust-source-side-lane`
+- `pnpm check:rust-semantic-lane`
+- `pnpm check:rust-producer-boundary`
 
-Repository:
+Release-facing bundle:
 
-- GitHub: `omenien/omena-engine-input-producers`
-- CI: `.github/workflows/ci.yml`
+- `pnpm check:rust-release-bundle`
 
-Extraction note:
-
-- this branch is a standalone scaffold prototype derived from a history-preserving subtree split
-- it keeps the existing crate name to minimize migration noise for the current internal consumer
-- repository branding is applied at the repo layer
-- crate naming remains unchanged for the first split
-
-Current naming stance:
-
-- keep crate name: `engine-input-producers`
-- use branded repository naming separately from crate naming
+This crate is intentionally internal. `publish = false` remains in effect at the workspace level.
