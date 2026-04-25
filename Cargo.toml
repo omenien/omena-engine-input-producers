@@ -1,12 +1,16 @@
 [package]
-name = "engine-input-producers"
+name = "omena-engine-input-producers"
 version = "0.1.0"
 edition = "2024"
 license = "MIT"
-publish = false
-description = "Rust input-derived producer artifacts for CSS Module Explainer EngineInputV2"
+description = "Input-derived producer artifacts for Omena CSS semantic analysis"
 repository = "https://github.com/omenien/omena-engine-input-producers"
 readme = "README.md"
+keywords = ["omena", "css-modules", "analysis", "semantics"]
+categories = ["development-tools"]
+
+[lib]
+name = "engine_input_producers"
 
 [lints.rust]
 unsafe_code = "deny"

@@ -1,8 +1,8 @@
-# `engine-input-producers`
+# `omena-engine-input-producers`
 
-Internal Rust crate for input-derived producer artifacts built from `EngineInputV2`.
+Input-derived producer artifacts for Omena CSS semantic analysis.
 
-This crate is the current Rust producer boundary inside the repo. It owns:
+This crate owns:
 
 - family-level producer artifacts for `expression-semantics`, `source-resolution`, `expression-domain`, and `selector-usage`
 - top-level lane artifacts for `source-side` and `semantic`
@@ -24,13 +24,11 @@ Current lane calibration:
 
 Primary checks:
 
-- `cargo test --manifest-path rust/Cargo.toml -p engine-input-producers`
-- `pnpm check:rust-source-side-lane`
-- `pnpm check:rust-semantic-lane`
-- `pnpm check:rust-producer-boundary`
+- `cargo fmt --all --check`
+- `cargo test`
+- `cargo clippy --all-targets --all-features -- -D warnings`
+- `cargo publish --dry-run`
 
-Release-facing bundle:
+Monorepo release-facing bundle:
 
 - `pnpm check:rust-release-bundle`
-
-This crate is intentionally internal. `publish = false` remains in effect at the workspace level.
