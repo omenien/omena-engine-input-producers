@@ -1,0 +1,58 @@
+name: Publish Crate
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Expected crate version to publish
+        required: true
+        default: 0.1.0
+      dry_run:
+        description: Run cargo publish --dry-run instead of publishing
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-crate-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        run: |
+          rustup toolchain install 1.95.0 --profile minimal --component rustfmt --component clippy
+          rustup default 1.95.0
+
+      - name: Validate crate version
+        run: |
+          grep -q '^name = "omena-engine-input-producers"$' Cargo.toml
+          grep -q '^version = "${{ inputs.version }}"$' Cargo.toml
+
+      - name: Cargo fmt
+        run: cargo fmt --all --check
+
+      - name: Cargo test
+        run: cargo test
+
+      - name: Cargo clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+
+      - name: Cargo publish dry-run
+        run: cargo publish --dry-run
+
+      - name: Cargo publish
+        if: ${{ !inputs.dry_run }}
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
+        run: |
+          test -n "${CARGO_REGISTRY_TOKEN:-}"
+          cargo publish
