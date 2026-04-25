@@ -8,6 +8,7 @@ repository = "https://github.com/omenien/omena-engine-input-producers"
 readme = "README.md"
 keywords = ["omena", "css-modules", "analysis", "semantics"]
 categories = ["development-tools"]
+exclude = [".github/**"]
 
 [lib]
 name = "engine_input_producers"
