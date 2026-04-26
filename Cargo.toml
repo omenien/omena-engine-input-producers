@@ -1,6 +1,6 @@
 [package]
 name = "omena-engine-input-producers"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 license = "MIT"
 description = "Input-derived producer artifacts for Omena CSS semantic analysis"
@@ -24,6 +24,6 @@ expect_used = "warn"
 panic = "warn"
 
 [dependencies]
-omena-abstract-value = { git = "https://github.com/omenien/omena-abstract-value.git", rev = "943ff5c" }
+omena-abstract-value = { version = "0.1.1", git = "https://github.com/omenien/omena-abstract-value.git", rev = "d409756" }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
