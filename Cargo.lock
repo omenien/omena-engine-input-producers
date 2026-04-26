@@ -24,7 +24,7 @@ dependencies = [
 
 [[package]]
 name = "omena-engine-input-producers"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "omena-abstract-value",
  "serde",
