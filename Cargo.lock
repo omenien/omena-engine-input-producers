@@ -15,9 +15,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79"
 
 [[package]]
+name = "omena-abstract-value"
+version = "0.1.0"
+source = "git+https://github.com/omenien/omena-abstract-value.git?rev=943ff5c#943ff5c112b6f3dd8cf6dbb0d33f62b4310b2cc7"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "omena-engine-input-producers"
 version = "0.1.0"
 dependencies = [
+ "omena-abstract-value",
  "serde",
  "serde_json",
 ]
