@@ -1,12 +1,12 @@
-# `omena-engine-input-producers`
+# `engine-input-producers`
 
-Input-derived producer artifacts for Omena CSS semantic analysis.
+Internal Rust crate for input-derived producer artifacts built from `EngineInputV2`.
 
-This crate owns:
+This crate is the current Rust producer boundary inside the repo. It owns:
 
 - family-level producer artifacts for `expression-semantics`, `source-resolution`, `expression-domain`, and `selector-usage`
 - top-level lane artifacts for `source-side` and `semantic`
-- canonical-candidate bundles, evaluator-candidate bundles, flow-analysis summaries, and canonical-producer signals where the input contract preserves enough evidence
+- canonical-candidate bundles, evaluator-candidate bundles, and canonical-producer signals where the input contract preserves enough evidence
 
 Current lane calibration:
 
@@ -18,18 +18,19 @@ Current lane calibration:
 - bounded canonical lane:
   - `expression-domain`
   - evaluator coverage is intentionally limited to type-fact-backed corpora
-  - flow analysis currently exposes explicit type-fact branch joins as the first 1-CFA product slice
 - shadow-only lane:
   - `selector-usage`
   - current `EngineInputV2` does not preserve enough reference-level evidence to promote it beyond shadow validation
 
 Primary checks:
 
-- `cargo fmt --all --check`
-- `cargo test`
-- `cargo clippy --all-targets --all-features -- -D warnings`
-- `cargo publish --dry-run`
+- `cargo test --manifest-path rust/Cargo.toml -p engine-input-producers`
+- `pnpm check:rust-source-side-lane`
+- `pnpm check:rust-semantic-lane`
+- `pnpm check:rust-producer-boundary`
 
-Monorepo release-facing bundle:
+Release-facing bundle:
 
 - `pnpm check:rust-release-bundle`
+
+This crate is intentionally internal. `publish = false` remains in effect at the workspace level.
